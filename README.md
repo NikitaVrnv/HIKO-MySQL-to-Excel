@@ -25,7 +25,7 @@ This script loads a MySQL database from an SQL dump file, processes the data, ex
 
 1. **Clone the Repository**
    ```sh
-   git clone https://github.com/your-username/mysql-to-excel.git
+   git clone https://github.com/NikitaVrnv/HIKO-MySQL-to-Excel.git
    cd mysql-to-excel
    ```
 
