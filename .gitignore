@@ -1,0 +1,39 @@
+GUIDE.md
+
+# Environment variables
+.env
+
+# Python virtual environment
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Input and output directories
+input/*
+!input/.gitkeep
+output/*
+!output/.gitkeep
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo

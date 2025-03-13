@@ -16,37 +16,49 @@ This script loads a MySQL database from an SQL dump file, processes the data, ex
 ### Prerequisites
 - Python 3.x
 - MySQL installed and running
-- Required Python packages:
-  ```sh
-  pip install mysql-connector-python pandas openpyxl
-  ```
 
-## Usage
-
+### Setup
 1. **Clone the Repository**
    ```sh
    git clone https://github.com/NikitaVrnv/HIKO-MySQL-to-Excel.git
-   cd mysql-to-excel
+   cd HIKO-MySQL-to-Excel
    ```
 
-2. **Update Configuration**  
-   Open `convert_sql_to_xlsx.py` and modify:
-   - `SQL_FILE_PATH` to point to your SQL dump file.
-   - `OUTPUT_DIR` to specify where Excel files should be saved.
-   - `MYSQL_CONFIG` to match your MySQL credentials.
-
-3. **Run the Script**
+2. **Create a Virtual Environment**
    ```sh
-   python convert_sql_to_xlsx.py
+   python3 -m venv venv
+   source venv/bin/activate
    ```
 
-4. **Find Your Data in Excel Files**  
-   The script generates `.xlsx` files in the specified `OUTPUT_DIR`, one per tenant.
+3. **Install Required Packages**
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+4. **Configure Environment**
+   ```sh
+   cp .env.example .env
+   nano .env
+   ```
+   Edit the `.env` file to match your MySQL credentials and other settings.
+
+## Usage
+
+1. **Place Your SQL Dump File**
+   Place your SQL dump file in the `input` directory (created automatically) or specify a custom path in the `.env` file.
+
+2. **Run the Script**
+   ```sh
+   python3 convert_sql_to_xlsx.py
+   ```
+
+3. **Find Your Data**
+   Excel files will be generated in the `output` directory, one per tenant.
 
 ## Example Output
 For a tenant named `blekastad`, the script generates:
 ```
-output_excel/
+output/
 ├── blekastad.xlsx
 ├── brezina.xlsx
 ├── deml.xlsx
