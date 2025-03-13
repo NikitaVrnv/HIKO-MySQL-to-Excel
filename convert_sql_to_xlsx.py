@@ -6,23 +6,27 @@ import pandas as pd
 import json
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Alignment
+from dotenv import load_dotenv
 
-# 🔹 Configuration: Update your MySQL credentials
-SQL_FILE_PATH = "/Users/example/Documents/db/db.sql"
-OUTPUT_DIR = "/Users/example/Documents/db/output_excel"
+# Load environment variables from .env file
+load_dotenv()
+
+# Create input and output directories if they don't exist
+os.makedirs('input', exist_ok=True)
+os.makedirs('output', exist_ok=True)
+
+# 🔹 Configuration from environment variables
+SQL_FILE_PATH = os.getenv('SQL_FILE_PATH', 'input/db.sql')
+OUTPUT_DIR = os.getenv('OUTPUT_DIR', 'output')
 MYSQL_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "root",  # 🔹 Change to your MySQL password
-    "database": "temp_db"
+    "host": os.getenv('MYSQL_HOST', 'localhost'),
+    "user": os.getenv('MYSQL_USER', 'root'),
+    "password": os.getenv('MYSQL_PASSWORD', 'root'),
+    "database": os.getenv('MYSQL_DATABASE', 'temp_db')
 }
 
-# 🔹 Define tenant prefixes
-TENANT_PREFIXES = [
-    "blekastad", "brezina", "deml", "kalivoda", "komensky",
-    "marci", "musil", "neumann", "pamatky", "patocka",
-    "polanus", "sachs", "studenti", "tgm", "ucenci" # 🔹 etc
-]
+# 🔹 Define tenant prefixes from environment variables
+TENANT_PREFIXES = os.getenv('TENANT_PREFIXES', 'blekastad,brezina,deml,kalivoda,komensky,marci,musil,neumann,pamatky,patocka,polanus,sachs,studenti,tgm,ucenci').split(',')
 
 # 🔹 Create output directory
 os.makedirs(OUTPUT_DIR, exist_ok=True)
